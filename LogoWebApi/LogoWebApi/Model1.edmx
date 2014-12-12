@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="omermobil_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dukkanlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="markaid" Type="int" />
+          <Property Name="isim" Type="nvarchar" MaxLength="30" />
+          <Property Name="sehir" Type="text" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+        </EntityType>
+        <EntityType Name="Futbolcu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="takimid" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isim" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isim" Type="nvarchar" MaxLength="30" />
+          <Property Name="cinsiyet" Type="bit" />
+          <Property Name="puan" Type="int" />
+          <Property Name="seviye" Type="int" />
+          <Property Name="yas" Type="int" />
+          <Property Name="mail" Type="int" />
+          <Property Name="ensonoynamatarihi" Type="date" />
+          <Property Name="gecicilokasyon" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Loglar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciid" Type="int" Nullable="false" />
+          <Property Name="logoid" Type="int" Nullable="false" />
+          <Property Name="bildimi" Type="bit" />
+          <Property Name="kacsaniyede" Type="int" />
+        </EntityType>
+        <EntityType Name="Logo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="markaid" Type="int" Nullable="false" />
+          <Property Name="resim" Type="text" />
+          <Property Name="renk1" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk2" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk3" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk4" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk5" Type="nvarchar" MaxLength="6" />
+          <Property Name="resim2" Type="text" />
+          <Property Name="seviye" Type="int" />
+        </EntityType>
+        <EntityType Name="Marka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isim" Type="nvarchar" MaxLength="30" />
+          <Property Name="oncelik" Type="int" />
+          <Property Name="tur" Type="text" />
+        </EntityType>
+        <EntityType Name="Reklam">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="markaid" Type="int" />
+          <Property Name="resim" Type="text" />
+          <Property Name="aciklama" Type="text" />
+          <Property Name="link" Type="text" />
+          <Property Name="goruntulenmesayisi" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omermobil_db.dbo.MarkaLogo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MarkaLogo">
+          <Key>
+            <PropertyRef Name="logoid" />
+            <PropertyRef Name="markaid" />
+          </Key>
+          <Property Name="logoid" Type="int" Nullable="false" />
+          <Property Name="markaid" Type="int" Nullable="false" />
+          <Property Name="markaisim" Type="nvarchar" MaxLength="30" />
+          <Property Name="seviye" Type="int" />
+          <Property Name="oncelik" Type="int" />
+          <Property Name="tur" Type="text" />
+          <Property Name="resim" Type="text" />
+          <Property Name="resim2" Type="text" />
+          <Property Name="renk1" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk2" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk3" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk4" Type="nvarchar" MaxLength="6" />
+          <Property Name="renk5" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omermobil_db.dbo.MarkaReklam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MarkaReklam">
+          <Key>
+            <PropertyRef Name="markaid" />
+            <PropertyRef Name="reklamid" />
+          </Key>
+          <Property Name="markaid" Type="int" Nullable="false" />
+          <Property Name="reklamid" Type="int" Nullable="false" />
+          <Property Name="reklamisim" Type="nvarchar" MaxLength="30" />
+          <Property Name="reklamresim" Type="text" />
+          <Property Name="reklamaciklama" Type="text" />
+        </EntityType>
+        <EntityContainer Name="omermobil_dbModelStoreContainer">
+          <EntitySet Name="Dukkanlar" EntityType="Self.Dukkanlar" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="Futbolcu" EntityType="Self.Futbolcu" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="Loglar" EntityType="Self.Loglar" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="Logo" EntityType="Self.Logo" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="Marka" EntityType="Self.Marka" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="Reklam" EntityType="Self.Reklam" Schema="omermobil" store:Type="Tables" />
+          <EntitySet Name="MarkaLogo" EntityType="Self.MarkaLogo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[MarkaLogo].[logoid] AS [logoid], 
+[MarkaLogo].[markaid] AS [markaid], 
+[MarkaLogo].[markaisim] AS [markaisim], 
+[MarkaLogo].[seviye] AS [seviye], 
+[MarkaLogo].[oncelik] AS [oncelik], 
+[MarkaLogo].[tur] AS [tur], 
+[MarkaLogo].[resim] AS [resim], 
+[MarkaLogo].[resim2] AS [resim2], 
+[MarkaLogo].[renk1] AS [renk1], 
+[MarkaLogo].[renk2] AS [renk2], 
+[MarkaLogo].[renk3] AS [renk3], 
+[MarkaLogo].[renk4] AS [renk4], 
+[MarkaLogo].[renk5] AS [renk5]
+FROM [dbo].[MarkaLogo] AS [MarkaLogo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MarkaReklam" EntityType="Self.MarkaReklam" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[MarkaReklam].[markaid] AS [markaid], 
+[MarkaReklam].[reklamid] AS [reklamid], 
+[MarkaReklam].[reklamisim] AS [reklamisim], 
+[MarkaReklam].[reklamresim] AS [reklamresim], 
+[MarkaReklam].[reklamaciklama] AS [reklamaciklama]
+FROM [dbo].[MarkaReklam] AS [MarkaReklam]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="omermobil_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dukkanlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="markaid" Type="Int32" />
+          <Property Name="isim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="sehir" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
+        </EntityType>
+        <EntityType Name="Futbolcu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="takimid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isim" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="Boolean" />
+          <Property Name="puan" Type="Int32" />
+          <Property Name="seviye" Type="Int32" />
+          <Property Name="yas" Type="Int32" />
+          <Property Name="mail" Type="Int32" />
+          <Property Name="ensonoynamatarihi" Type="DateTime" Precision="0" />
+          <Property Name="gecicilokasyon" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Loglar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciid" Type="Int32" Nullable="false" />
+          <Property Name="logoid" Type="Int32" Nullable="false" />
+          <Property Name="bildimi" Type="Boolean" />
+          <Property Name="kacsaniyede" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Logo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="markaid" Type="Int32" Nullable="false" />
+          <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="renk1" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk2" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk3" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk4" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk5" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="resim2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="seviye" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Marka">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="oncelik" Type="Int32" />
+          <Property Name="tur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Reklam">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="markaid" Type="Int32" />
+          <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="goruntulenmesayisi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MarkaLogo">
+          <Key>
+            <PropertyRef Name="logoid" />
+            <PropertyRef Name="markaid" />
+          </Key>
+          <Property Name="logoid" Type="Int32" Nullable="false" />
+          <Property Name="markaid" Type="Int32" Nullable="false" />
+          <Property Name="markaisim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="seviye" Type="Int32" />
+          <Property Name="oncelik" Type="Int32" />
+          <Property Name="tur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="resim2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="renk1" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk2" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk3" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk4" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="renk5" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MarkaReklam">
+          <Key>
+            <PropertyRef Name="markaid" />
+            <PropertyRef Name="reklamid" />
+          </Key>
+          <Property Name="markaid" Type="Int32" Nullable="false" />
+          <Property Name="reklamid" Type="Int32" Nullable="false" />
+          <Property Name="reklamisim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="reklamresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="reklamaciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="omermobil_dbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dukkanlars" EntityType="Self.Dukkanlar" />
+          <EntitySet Name="Futbolcus" EntityType="Self.Futbolcu" />
+          <EntitySet Name="Kullanicis" EntityType="Self.Kullanici" />
+          <EntitySet Name="Loglars" EntityType="Self.Loglar" />
+          <EntitySet Name="Logoes" EntityType="Self.Logo" />
+          <EntitySet Name="Markas" EntityType="Self.Marka" />
+          <EntitySet Name="Reklams" EntityType="Self.Reklam" />
+          <EntitySet Name="MarkaLogoes" EntityType="Self.MarkaLogo" />
+          <EntitySet Name="MarkaReklams" EntityType="Self.MarkaReklam" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="omermobil_dbModelStoreContainer" CdmEntityContainer="omermobil_dbEntities1">
+          <EntitySetMapping Name="Dukkanlars">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Dukkanlar">
+              <MappingFragment StoreEntitySet="Dukkanlar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="markaid" ColumnName="markaid" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="sehir" ColumnName="sehir" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Futbolcus">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Futbolcu">
+              <MappingFragment StoreEntitySet="Futbolcu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="takimid" ColumnName="takimid" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicis">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="puan" ColumnName="puan" />
+                <ScalarProperty Name="seviye" ColumnName="seviye" />
+                <ScalarProperty Name="yas" ColumnName="yas" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="ensonoynamatarihi" ColumnName="ensonoynamatarihi" />
+                <ScalarProperty Name="gecicilokasyon" ColumnName="gecicilokasyon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loglars">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Loglar">
+              <MappingFragment StoreEntitySet="Loglar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kullaniciid" ColumnName="kullaniciid" />
+                <ScalarProperty Name="logoid" ColumnName="logoid" />
+                <ScalarProperty Name="bildimi" ColumnName="bildimi" />
+                <ScalarProperty Name="kacsaniyede" ColumnName="kacsaniyede" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logoes">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Logo">
+              <MappingFragment StoreEntitySet="Logo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="markaid" ColumnName="markaid" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="renk1" ColumnName="renk1" />
+                <ScalarProperty Name="renk2" ColumnName="renk2" />
+                <ScalarProperty Name="renk3" ColumnName="renk3" />
+                <ScalarProperty Name="renk4" ColumnName="renk4" />
+                <ScalarProperty Name="renk5" ColumnName="renk5" />
+                <ScalarProperty Name="resim2" ColumnName="resim2" />
+                <ScalarProperty Name="seviye" ColumnName="seviye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markas">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Marka">
+              <MappingFragment StoreEntitySet="Marka">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="oncelik" ColumnName="oncelik" />
+                <ScalarProperty Name="tur" ColumnName="tur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reklams">
+            <EntityTypeMapping TypeName="omermobil_dbModel.Reklam">
+              <MappingFragment StoreEntitySet="Reklam">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="markaid" ColumnName="markaid" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="goruntulenmesayisi" ColumnName="goruntulenmesayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarkaLogoes">
+            <EntityTypeMapping TypeName="omermobil_dbModel.MarkaLogo">
+              <MappingFragment StoreEntitySet="MarkaLogo">
+                <ScalarProperty Name="logoid" ColumnName="logoid" />
+                <ScalarProperty Name="markaid" ColumnName="markaid" />
+                <ScalarProperty Name="markaisim" ColumnName="markaisim" />
+                <ScalarProperty Name="seviye" ColumnName="seviye" />
+                <ScalarProperty Name="oncelik" ColumnName="oncelik" />
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+                <ScalarProperty Name="resim2" ColumnName="resim2" />
+                <ScalarProperty Name="renk1" ColumnName="renk1" />
+                <ScalarProperty Name="renk2" ColumnName="renk2" />
+                <ScalarProperty Name="renk3" ColumnName="renk3" />
+                <ScalarProperty Name="renk4" ColumnName="renk4" />
+                <ScalarProperty Name="renk5" ColumnName="renk5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarkaReklams">
+            <EntityTypeMapping TypeName="omermobil_dbModel.MarkaReklam">
+              <MappingFragment StoreEntitySet="MarkaReklam">
+                <ScalarProperty Name="markaid" ColumnName="markaid" />
+                <ScalarProperty Name="reklamid" ColumnName="reklamid" />
+                <ScalarProperty Name="reklamisim" ColumnName="reklamisim" />
+                <ScalarProperty Name="reklamresim" ColumnName="reklamresim" />
+                <ScalarProperty Name="reklamaciklama" ColumnName="reklamaciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

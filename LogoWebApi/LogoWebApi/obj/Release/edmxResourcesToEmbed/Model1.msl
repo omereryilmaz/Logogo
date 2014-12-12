@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="omermobil_dbModelStoreContainer" CdmEntityContainer="omermobil_dbEntities1">
+    <EntitySetMapping Name="Dukkanlars">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Dukkanlar">
+        <MappingFragment StoreEntitySet="Dukkanlar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="markaid" ColumnName="markaid" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="sehir" ColumnName="sehir" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Futbolcus">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Futbolcu">
+        <MappingFragment StoreEntitySet="Futbolcu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="takimid" ColumnName="takimid" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicis">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+          <ScalarProperty Name="puan" ColumnName="puan" />
+          <ScalarProperty Name="seviye" ColumnName="seviye" />
+          <ScalarProperty Name="yas" ColumnName="yas" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="ensonoynamatarihi" ColumnName="ensonoynamatarihi" />
+          <ScalarProperty Name="gecicilokasyon" ColumnName="gecicilokasyon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loglars">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Loglar">
+        <MappingFragment StoreEntitySet="Loglar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kullaniciid" ColumnName="kullaniciid" />
+          <ScalarProperty Name="logoid" ColumnName="logoid" />
+          <ScalarProperty Name="bildimi" ColumnName="bildimi" />
+          <ScalarProperty Name="kacsaniyede" ColumnName="kacsaniyede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logoes">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Logo">
+        <MappingFragment StoreEntitySet="Logo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="markaid" ColumnName="markaid" />
+          <ScalarProperty Name="resim" ColumnName="resim" />
+          <ScalarProperty Name="renk1" ColumnName="renk1" />
+          <ScalarProperty Name="renk2" ColumnName="renk2" />
+          <ScalarProperty Name="renk3" ColumnName="renk3" />
+          <ScalarProperty Name="renk4" ColumnName="renk4" />
+          <ScalarProperty Name="renk5" ColumnName="renk5" />
+          <ScalarProperty Name="resim2" ColumnName="resim2" />
+          <ScalarProperty Name="seviye" ColumnName="seviye" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Markas">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Marka">
+        <MappingFragment StoreEntitySet="Marka">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="oncelik" ColumnName="oncelik" />
+          <ScalarProperty Name="tur" ColumnName="tur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reklams">
+      <EntityTypeMapping TypeName="omermobil_dbModel.Reklam">
+        <MappingFragment StoreEntitySet="Reklam">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="markaid" ColumnName="markaid" />
+          <ScalarProperty Name="resim" ColumnName="resim" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="goruntulenmesayisi" ColumnName="goruntulenmesayisi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarkaLogoes">
+      <EntityTypeMapping TypeName="omermobil_dbModel.MarkaLogo">
+        <MappingFragment StoreEntitySet="MarkaLogo">
+          <ScalarProperty Name="logoid" ColumnName="logoid" />
+          <ScalarProperty Name="markaid" ColumnName="markaid" />
+          <ScalarProperty Name="markaisim" ColumnName="markaisim" />
+          <ScalarProperty Name="seviye" ColumnName="seviye" />
+          <ScalarProperty Name="oncelik" ColumnName="oncelik" />
+          <ScalarProperty Name="tur" ColumnName="tur" />
+          <ScalarProperty Name="resim" ColumnName="resim" />
+          <ScalarProperty Name="resim2" ColumnName="resim2" />
+          <ScalarProperty Name="renk1" ColumnName="renk1" />
+          <ScalarProperty Name="renk2" ColumnName="renk2" />
+          <ScalarProperty Name="renk3" ColumnName="renk3" />
+          <ScalarProperty Name="renk4" ColumnName="renk4" />
+          <ScalarProperty Name="renk5" ColumnName="renk5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarkaReklams">
+      <EntityTypeMapping TypeName="omermobil_dbModel.MarkaReklam">
+        <MappingFragment StoreEntitySet="MarkaReklam">
+          <ScalarProperty Name="markaid" ColumnName="markaid" />
+          <ScalarProperty Name="reklamid" ColumnName="reklamid" />
+          <ScalarProperty Name="reklamisim" ColumnName="reklamisim" />
+          <ScalarProperty Name="reklamresim" ColumnName="reklamresim" />
+          <ScalarProperty Name="reklamaciklama" ColumnName="reklamaciklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

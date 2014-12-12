@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Files>
+  <XAPFiles>
+    <File>resources.pri</File>
+    <File>LogoGO.dll</File>
+    <File>tr-TR\LogoGO.resources.dll</File>
+    <File>tr-TR\Microsoft.Phone.Controls.Toolkit.resources.dll</File>
+    <File>Assets\AlignmentGrid.png</File>
+    <File>Assets\ApplicationIcon.png</File>
+    <File>Assets\BadgeLogo.png</File>
+    <File>Assets\Logo.png</File>
+    <File>Assets\SplashScreen.png</File>
+    <File>Assets\SquareTile150x150.png</File>
+    <File>Assets\SquareTile71x71.png</File>
+    <File>Assets\StoreLogo.png</File>
+    <File>Assets\WideLogo.png</File>
+    <File>Assets\Tiles\FlipCycleTileLarge.png</File>
+    <File>Assets\Tiles\FlipCycleTileMedium.png</File>
+    <File>Assets\Tiles\FlipCycleTileSmall.png</File>
+    <File>Assets\Tiles\IconicTileMediumLarge.png</File>
+    <File>Assets\Tiles\IconicTileSmall.png</File>
+    <File>icon.png</File>
+    <File>images\FaceBook-icon.png</File>
+    <File>image\pushpin.png</File>
+    <File>image\pushpin2.png</File>
+    <File>logogoicon2.png</File>
+    <File>logosmall.png</File>
+    <File>README_FIRST.txt</File>
+    <File>Toolkit.Content\ApplicationBar.Add.png</File>
+    <File>Toolkit.Content\ApplicationBar.Cancel.png</File>
+    <File>Toolkit.Content\ApplicationBar.Check.png</File>
+    <File>Toolkit.Content\ApplicationBar.Delete.png</File>
+    <File>Toolkit.Content\ApplicationBar.Select.png</File>
+    <File>AppManifest.xaml</File>
+    <File>Facebook.dll</File>
+    <File>Microsoft.Phone.Controls.Toolkit.dll</File>
+    <File Type="PCL">Microsoft.Threading.Tasks.dll</File>
+    <File Type="PCL">Microsoft.Threading.Tasks.Extensions.dll</File>
+    <File>Microsoft.Threading.Tasks.Extensions.Phone.dll</File>
+    <File Type="PCL">Newtonsoft.Json.dll</File>
+    <File>Facebook.xml</File>
+    <File>Microsoft.Threading.Tasks.xml</File>
+    <File>Microsoft.Threading.Tasks.Extensions.xml</File>
+    <File>Microsoft.Threading.Tasks.Extensions.Phone.xml</File>
+    <File>Newtonsoft.Json.xml</File>
+    <File>logo1icon.png</File>
+    <File>LogoGO111.png</File>
+    <File>WMAppManifest.xml</File>
+    <File>AppxManifest.xml</File>
+  </XAPFiles>
+  <APPXFiles />
+</Files>

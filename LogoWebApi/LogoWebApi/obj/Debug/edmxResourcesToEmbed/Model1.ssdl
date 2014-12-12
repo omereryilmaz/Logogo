@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="omermobil_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dukkanlar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="markaid" Type="int" />
+    <Property Name="isim" Type="nvarchar" MaxLength="30" />
+    <Property Name="sehir" Type="text" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="longitude" Type="float" />
+  </EntityType>
+  <EntityType Name="Futbolcu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="takimid" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isim" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isim" Type="nvarchar" MaxLength="30" />
+    <Property Name="cinsiyet" Type="bit" />
+    <Property Name="puan" Type="int" />
+    <Property Name="seviye" Type="int" />
+    <Property Name="yas" Type="int" />
+    <Property Name="mail" Type="int" />
+    <Property Name="ensonoynamatarihi" Type="date" />
+    <Property Name="gecicilokasyon" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Loglar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciid" Type="int" Nullable="false" />
+    <Property Name="logoid" Type="int" Nullable="false" />
+    <Property Name="bildimi" Type="bit" />
+    <Property Name="kacsaniyede" Type="int" />
+  </EntityType>
+  <EntityType Name="Logo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="markaid" Type="int" Nullable="false" />
+    <Property Name="resim" Type="text" />
+    <Property Name="renk1" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk2" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk3" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk4" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk5" Type="nvarchar" MaxLength="6" />
+    <Property Name="resim2" Type="text" />
+    <Property Name="seviye" Type="int" />
+  </EntityType>
+  <EntityType Name="Marka">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isim" Type="nvarchar" MaxLength="30" />
+    <Property Name="oncelik" Type="int" />
+    <Property Name="tur" Type="text" />
+  </EntityType>
+  <EntityType Name="Reklam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="markaid" Type="int" />
+    <Property Name="resim" Type="text" />
+    <Property Name="aciklama" Type="text" />
+    <Property Name="link" Type="text" />
+    <Property Name="goruntulenmesayisi" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'omermobil_db.dbo.MarkaLogo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MarkaLogo">
+    <Key>
+      <PropertyRef Name="logoid" />
+      <PropertyRef Name="markaid" />
+    </Key>
+    <Property Name="logoid" Type="int" Nullable="false" />
+    <Property Name="markaid" Type="int" Nullable="false" />
+    <Property Name="markaisim" Type="nvarchar" MaxLength="30" />
+    <Property Name="seviye" Type="int" />
+    <Property Name="oncelik" Type="int" />
+    <Property Name="tur" Type="text" />
+    <Property Name="resim" Type="text" />
+    <Property Name="resim2" Type="text" />
+    <Property Name="renk1" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk2" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk3" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk4" Type="nvarchar" MaxLength="6" />
+    <Property Name="renk5" Type="nvarchar" MaxLength="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'omermobil_db.dbo.MarkaReklam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MarkaReklam">
+    <Key>
+      <PropertyRef Name="markaid" />
+      <PropertyRef Name="reklamid" />
+    </Key>
+    <Property Name="markaid" Type="int" Nullable="false" />
+    <Property Name="reklamid" Type="int" Nullable="false" />
+    <Property Name="reklamisim" Type="nvarchar" MaxLength="30" />
+    <Property Name="reklamresim" Type="text" />
+    <Property Name="reklamaciklama" Type="text" />
+  </EntityType>
+  <EntityContainer Name="omermobil_dbModelStoreContainer">
+    <EntitySet Name="Dukkanlar" EntityType="Self.Dukkanlar" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="Futbolcu" EntityType="Self.Futbolcu" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="Loglar" EntityType="Self.Loglar" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="Logo" EntityType="Self.Logo" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="Marka" EntityType="Self.Marka" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="Reklam" EntityType="Self.Reklam" Schema="omermobil" store:Type="Tables" />
+    <EntitySet Name="MarkaLogo" EntityType="Self.MarkaLogo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[MarkaLogo].[logoid] AS [logoid], 
+[MarkaLogo].[markaid] AS [markaid], 
+[MarkaLogo].[markaisim] AS [markaisim], 
+[MarkaLogo].[seviye] AS [seviye], 
+[MarkaLogo].[oncelik] AS [oncelik], 
+[MarkaLogo].[tur] AS [tur], 
+[MarkaLogo].[resim] AS [resim], 
+[MarkaLogo].[resim2] AS [resim2], 
+[MarkaLogo].[renk1] AS [renk1], 
+[MarkaLogo].[renk2] AS [renk2], 
+[MarkaLogo].[renk3] AS [renk3], 
+[MarkaLogo].[renk4] AS [renk4], 
+[MarkaLogo].[renk5] AS [renk5]
+FROM [dbo].[MarkaLogo] AS [MarkaLogo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MarkaReklam" EntityType="Self.MarkaReklam" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[MarkaReklam].[markaid] AS [markaid], 
+[MarkaReklam].[reklamid] AS [reklamid], 
+[MarkaReklam].[reklamisim] AS [reklamisim], 
+[MarkaReklam].[reklamresim] AS [reklamresim], 
+[MarkaReklam].[reklamaciklama] AS [reklamaciklama]
+FROM [dbo].[MarkaReklam] AS [MarkaReklam]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

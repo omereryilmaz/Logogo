@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="omermobil_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dukkanlar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="markaid" Type="Int32" />
+    <Property Name="isim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="sehir" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="latitude" Type="Double" />
+    <Property Name="longitude" Type="Double" />
+  </EntityType>
+  <EntityType Name="Futbolcu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="takimid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isim" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="cinsiyet" Type="Boolean" />
+    <Property Name="puan" Type="Int32" />
+    <Property Name="seviye" Type="Int32" />
+    <Property Name="yas" Type="Int32" />
+    <Property Name="mail" Type="Int32" />
+    <Property Name="ensonoynamatarihi" Type="DateTime" Precision="0" />
+    <Property Name="gecicilokasyon" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Loglar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciid" Type="Int32" Nullable="false" />
+    <Property Name="logoid" Type="Int32" Nullable="false" />
+    <Property Name="bildimi" Type="Boolean" />
+    <Property Name="kacsaniyede" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Logo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="markaid" Type="Int32" Nullable="false" />
+    <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="renk1" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk2" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk3" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk4" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk5" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="resim2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="seviye" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Marka">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="oncelik" Type="Int32" />
+    <Property Name="tur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Reklam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="markaid" Type="Int32" />
+    <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="goruntulenmesayisi" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MarkaLogo">
+    <Key>
+      <PropertyRef Name="logoid" />
+      <PropertyRef Name="markaid" />
+    </Key>
+    <Property Name="logoid" Type="Int32" Nullable="false" />
+    <Property Name="markaid" Type="Int32" Nullable="false" />
+    <Property Name="markaisim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="seviye" Type="Int32" />
+    <Property Name="oncelik" Type="Int32" />
+    <Property Name="tur" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="resim2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="renk1" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk2" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk3" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk4" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="renk5" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MarkaReklam">
+    <Key>
+      <PropertyRef Name="markaid" />
+      <PropertyRef Name="reklamid" />
+    </Key>
+    <Property Name="markaid" Type="Int32" Nullable="false" />
+    <Property Name="reklamid" Type="Int32" Nullable="false" />
+    <Property Name="reklamisim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="reklamresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="reklamaciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="omermobil_dbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dukkanlars" EntityType="Self.Dukkanlar" />
+    <EntitySet Name="Futbolcus" EntityType="Self.Futbolcu" />
+    <EntitySet Name="Kullanicis" EntityType="Self.Kullanici" />
+    <EntitySet Name="Loglars" EntityType="Self.Loglar" />
+    <EntitySet Name="Logoes" EntityType="Self.Logo" />
+    <EntitySet Name="Markas" EntityType="Self.Marka" />
+    <EntitySet Name="Reklams" EntityType="Self.Reklam" />
+    <EntitySet Name="MarkaLogoes" EntityType="Self.MarkaLogo" />
+    <EntitySet Name="MarkaReklams" EntityType="Self.MarkaReklam" />
+  </EntityContainer>
+</Schema>
